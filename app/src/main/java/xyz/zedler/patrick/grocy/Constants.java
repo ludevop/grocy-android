@@ -15,7 +15,7 @@
  * along with Grocy Android. If not, see http://www.gnu.org/licenses/.
  *
  * Copyright (c) 2020-2024 by Patrick Zedler and Dominic Zedler
- * Copyright (c) 2024-2025 by Patrick Zedler
+ * Copyright (c) 2024-2026 by Patrick Zedler
  */
 
 package xyz.zedler.patrick.grocy;
@@ -133,8 +133,6 @@ public final class Constants {
     public final static String CAMERA_SCANNER_VISIBLE_RECIPE = "camera_scanner_visible_recipe";
 
     public final static String INTRO_SHOWN = "intro_shown";
-    public final static String VERSION_COMPATIBILITY_IGNORED = "version_ignored_compatibility";
-    public final static String UPDATE_INFO_READ = "update_info_read";
     public final static String LAST_VERSION = "last_version";
     public final static String LAST_VERSION_DATABASE = "last_version_database";
     public final static String OVERVIEW_FAB_INFO_SHOWN = "overview_fab_info_shown";
@@ -177,6 +175,7 @@ public final class Constants {
       public final static String DATE_KEYBOARD_INPUT = "date_keyboard_input";
       public final static String DATE_KEYBOARD_REVERSE = "date_keyboard_reverse";
       public final static String MESSAGE_DURATION = "message_duration";
+      public final static String BARCODE_AMOUNT = "product_barcode_amount";
     }
 
     public final static class SCANNER {
@@ -281,6 +280,7 @@ public final class Constants {
       public final static boolean DATE_KEYBOARD_INPUT = false;
       public final static boolean DATE_KEYBOARD_REVERSE = false;
       public final static int MESSAGE_DURATION = 10;
+      public final static boolean BARCODE_AMOUNT = true;
     }
 
     public final static class SCANNER {
@@ -459,7 +459,6 @@ public final class Constants {
     public final static String HIGHLIGHTS = "highlights";
     public final static String HINT = "hint";
     public final static String CURRENCY = "currency";
-    public final static String SUPPORTED_VERSIONS = "supported_versions";
     public final static String VERSION = "version";
     public final static String SERVER = "server";
     public final static String KEY = "key";

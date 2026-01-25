@@ -15,7 +15,7 @@
  * along with Grocy Android. If not, see http://www.gnu.org/licenses/.
  *
  * Copyright (c) 2020-2024 by Patrick Zedler and Dominic Zedler
- * Copyright (c) 2024-2025 by Patrick Zedler
+ * Copyright (c) 2024-2026 by Patrick Zedler
  */
 
 package xyz.zedler.patrick.grocy.helper;
@@ -108,7 +108,6 @@ public class DownloadHelper {
   private final String apiKey;
   public final boolean debug;
   private final int timeoutSeconds;
-  private int loadingRequests;
 
   public DownloadHelper(
       Application application,
@@ -128,7 +127,6 @@ public class DownloadHelper {
     apiKey = sharedPrefs.getString(Constants.PREF.API_KEY, "");
     uuidHelper = UUID.randomUUID().toString();
     queueArrayList = new ArrayList<>();
-    loadingRequests = 0;
     this.onLoadingListener = onLoadingListener;
     this.offlineLive = offlineLive;
     timeoutSeconds = sharedPrefs.getInt(
@@ -156,7 +154,6 @@ public class DownloadHelper {
     this.apiKey = apiKey;
     uuidHelper = UUID.randomUUID().toString();
     queueArrayList = new ArrayList<>();
-    loadingRequests = 0;
     this.onLoadingListener = onLoadingListener;
     this.offlineLive = null;
     timeoutSeconds = sharedPrefs.getInt(

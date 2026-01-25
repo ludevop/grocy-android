@@ -15,7 +15,7 @@
   ~ along with Grocy Android. If not, see http://www.gnu.org/licenses/.
   ~
   ~ Copyright (c) 2020-2024 by Patrick Zedler and Dominic Zedler
-  ~ Copyright (c) 2024-2025 by Patrick Zedler
+  ~ Copyright (c) 2024-2026 by Patrick Zedler
   -->
 
 <layout
@@ -364,6 +364,36 @@
               android:id="@+id/switch_date_keyboard_reverse"
               style="@style/Widget.Grocy.Switch"
               android:checked="@={viewModel.dateKeyboardReverseEnabled}" />
+
+          </LinearLayout>
+
+          <LinearLayout
+            style="@style/Widget.Grocy.LinearLayout.ListItem.TwoLine.Clickable.More"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="@{v -> switchBarcodeAmount.setChecked(!switchBarcodeAmount.isChecked())}">
+
+            <ImageView
+              style="@style/Widget.Grocy.ImageView.ListItem.Icon"
+              tools:ignore="ContentDescription"
+              android:src="@drawable/ic_round_barcode" />
+
+            <LinearLayout style="@style/Widget.Grocy.LinearLayout.ListItem.TextBox.Stretch">
+
+              <TextView
+                style="@style/Widget.Grocy.TextView.ListItem.Title"
+                android:text="@string/setting_barcode_amount" />
+
+              <TextView
+                style="@style/Widget.Grocy.TextView.ListItem.Description"
+                android:text="@string/setting_barcode_amount_description" />
+
+            </LinearLayout>
+
+            <com.google.android.material.materialswitch.MaterialSwitch
+              android:id="@+id/switch_barcode_amount"
+              style="@style/Widget.Grocy.Switch"
+              android:checked="@={viewModel.barcodeAmountEnabled}" />
 
           </LinearLayout>
 

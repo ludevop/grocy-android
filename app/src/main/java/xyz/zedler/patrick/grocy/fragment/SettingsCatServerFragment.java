@@ -15,7 +15,7 @@
  * along with Grocy Android. If not, see http://www.gnu.org/licenses/.
  *
  * Copyright (c) 2020-2024 by Patrick Zedler and Dominic Zedler
- * Copyright (c) 2024-2025 by Patrick Zedler
+ * Copyright (c) 2024-2026 by Patrick Zedler
  */
 
 package xyz.zedler.patrick.grocy.fragment;
@@ -96,13 +96,6 @@ public class SettingsCatServerFragment extends BaseFragment {
     binding.toolbar.setNavigationOnClickListener(v -> activity.navUtil.navigateUp());
 
     binding.swipe.setEnabled(false);
-
-    binding.textCompatible.setTextColor(
-        ResUtil.getColor(
-            activity,
-            viewModel.isVersionCompatible() ? R.attr.colorCustomGreen : R.attr.colorError
-        )
-    );
 
     binding.linearSettingReloadConfig.setOnClickListener(v -> {
       binding.linearSettingReloadConfig.setEnabled(false);
