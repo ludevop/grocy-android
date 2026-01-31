@@ -96,6 +96,7 @@ public class MealPlanEntryAdapter extends
     void onCompleteMealPlanEntry(MealPlanEntry entry);
     void onAddToShoppingListMealPlanEntry(MealPlanEntry entry);
     void onChangeSectionMealPlanEntry(MealPlanEntry entry);
+    void onMoveMealPlanEntry(MealPlanEntry entry);
   }
 
   public MealPlanEntryAdapter(
@@ -598,6 +599,13 @@ public class MealPlanEntryAdapter extends
     binding.buttonSection.setOnClickListener(v -> {
       if (listener != null) {
         listener.onChangeSectionMealPlanEntry(entry);
+      }
+    });
+
+    // Set up move button click listener
+    binding.buttonMove.setOnClickListener(v -> {
+      if (listener != null) {
+        listener.onMoveMealPlanEntry(entry);
       }
     });
 

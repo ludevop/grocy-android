@@ -29,8 +29,11 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.ItemTouchHelper;
+import com.google.android.material.datepicker.MaterialDatePicker;
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
+import java.time.Instant;
 import java.time.LocalDate;
+import java.time.ZoneId;
 import java.util.ArrayList;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -305,6 +308,50 @@ public class MealPlanPagingFragment extends Fragment implements MealPlanEntryAda
     }
 
     return getString(R.string.property_meal_plan_entry);
+  }
+
+  @Override
+  public void onMoveMealPlanEntry(MealPlanEntry entry) {
+    // Show date picker dialog
+    MaterialDatePicker<Long> datePicker = MaterialDatePicker.Builder.datePicker()
+        .setTitleText(R.string.title_move_meal_plan_entry)
+        .setSelection(MaterialDatePicker.todayInUtcMilliseconds())
+        .build();
+
+    datePicker.addOnPositiveButtonClickListener(selection -> {
+      // Convert selection (UTC milliseconds) to LocalDate
+      LocalDate selectedDate = Instant.ofEpochMilli(selection)
+          .atZone(ZoneId.of("UTC"))
+          .toLocalDate();
+      String newDay = selectedDate.format(viewModel.getDateFormatter());
+
+      // Don't move if same day
+      String currentDay = date.format(viewModel.getDateFormatter());
+      if (currentDay.equals(newDay)) {
+        return;
+      }
+
+      // Update the entry's day via API
+      JSONObject jsonObject = new JSONObject();
+      try {
+        jsonObject.put("day", newDay);
+      } catch (JSONException e) {
+        activity.showSnackbar(R.string.error_undefined, false);
+        return;
+      }
+
+      dlHelper.put(
+          viewModel.getGrocyApi().getObject(GrocyApi.ENTITY.MEAL_PLAN, entry.getId()),
+          jsonObject,
+          response -> {
+            activity.showSnackbar(R.string.msg_meal_plan_entry_moved, false);
+            viewModel.downloadData(false);
+          },
+          error -> activity.showSnackbar(R.string.error_undefined, false)
+      );
+    });
+
+    datePicker.show(getParentFragmentManager(), "date_picker");
   }
 }
 
