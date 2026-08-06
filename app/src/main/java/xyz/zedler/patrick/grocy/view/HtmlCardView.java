@@ -15,7 +15,7 @@
  * along with Grocy Android. If not, see http://www.gnu.org/licenses/.
  *
  * Copyright (c) 2020-2024 by Patrick Zedler and Dominic Zedler
- * Copyright (c) 2024-2025 by Patrick Zedler
+ * Copyright (c) 2024-2026 by Patrick Zedler
  */
 
 package xyz.zedler.patrick.grocy.view;
@@ -183,8 +183,8 @@ public class HtmlCardView extends LinearLayout {
     );
     int linkColor = ResUtil.getColor(context, R.attr.colorPrimary);
     return  "<!DOCTYPE html><html><head><meta charset='UTF-8'><style type='text/css'>"
-        + "@font-face{font-family: Jost; src: url('fonts/jost_400_book.otf')}"
-        + "body{font-family: Jost;color:#" + String.format("%06X", (0xFFFFFF & textColor)) + ";}"
+        + "@font-face{font-family: 'Google Sans Flex'; src: url('fonts/google_sans_flex_regular.ttf')}"
+        + "body{font-family: 'Google Sans Flex';color:#" + String.format("%06X", (0xFFFFFF & textColor)) + ";}"
         + "a{color:#" + String.format("%06X", (0xFFFFFF & linkColor)) + ";}"
         + "</style></head><body>" + html + "</body></html>";
   }

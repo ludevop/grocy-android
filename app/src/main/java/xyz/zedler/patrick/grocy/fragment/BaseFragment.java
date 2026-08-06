@@ -15,7 +15,7 @@
  * along with Grocy Android. If not, see http://www.gnu.org/licenses/.
  *
  * Copyright (c) 2020-2024 by Patrick Zedler and Dominic Zedler
- * Copyright (c) 2024-2025 by Patrick Zedler
+ * Copyright (c) 2024-2026 by Patrick Zedler
  */
 
 package xyz.zedler.patrick.grocy.fragment;
@@ -236,7 +236,7 @@ public class BaseFragment extends Fragment {
 
   public void enableLoginButtons() {}
 
-  public void login(boolean checkVersion) {}
+  public void login() {}
 
   @NonNull
   public NavController findNavController() {

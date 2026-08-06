@@ -15,7 +15,7 @@
  * along with Grocy Android. If not, see http://www.gnu.org/licenses/.
  *
  * Copyright (c) 2020-2024 by Patrick Zedler and Dominic Zedler
- * Copyright (c) 2024-2025 by Patrick Zedler
+ * Copyright (c) 2024-2026 by Patrick Zedler
  */
 
 package xyz.zedler.patrick.grocy.viewmodel;
@@ -47,7 +47,6 @@ import xyz.zedler.patrick.grocy.Constants.SETTINGS_DEFAULT;
 import xyz.zedler.patrick.grocy.R;
 import xyz.zedler.patrick.grocy.api.GrocyApi;
 import xyz.zedler.patrick.grocy.fragment.bottomSheetDialog.BarcodeFormatsBottomSheet;
-import xyz.zedler.patrick.grocy.fragment.bottomSheetDialog.CompatibilityBottomSheet;
 import xyz.zedler.patrick.grocy.fragment.bottomSheetDialog.InputBottomSheet;
 import xyz.zedler.patrick.grocy.fragment.bottomSheetDialog.LocationsBottomSheet;
 import xyz.zedler.patrick.grocy.fragment.bottomSheetDialog.ProductGroupsBottomSheet;
@@ -140,45 +139,6 @@ public class SettingsViewModel extends BaseViewModel {
     allowedDecimalPlacesAmount = sharedPrefs.getInt(
         STOCK.DECIMAL_PLACES_AMOUNT, SETTINGS_DEFAULT.STOCK.DECIMAL_PLACES_AMOUNT
     );
-  }
-
-  public boolean isVersionCompatible() {
-    return getSupportedVersions().contains(
-        sharedPrefs.getString(
-            Constants.PREF.GROCY_VERSION,
-            getString(R.string.date_unknown)
-        )
-    );
-  }
-
-  public boolean getIsVersionCompatible() {
-    return isVersionCompatible();
-  }
-
-  public void showCompatibilityBottomSheet() {
-    if (isVersionCompatible()) {
-      return;
-    }
-    Bundle bundle = new Bundle();
-    bundle.putString(Constants.ARGUMENT.SERVER, sharedPrefs.getString(
-        Constants.PREF.SERVER_URL,
-        getString(R.string.date_unknown)
-    ));
-    bundle.putString(Constants.ARGUMENT.KEY, sharedPrefs.getString(
-        Constants.PREF.API_KEY,
-        getString(R.string.date_unknown)
-    ));
-    bundle.putString(Constants.ARGUMENT.VERSION, sharedPrefs.getString(
-        Constants.PREF.GROCY_VERSION,
-        getString(R.string.date_unknown)
-    ));
-    bundle.putBoolean(Constants.ARGUMENT.DEMO_CHOSEN, isDemoInstance());
-    bundle.putStringArrayList(
-        Constants.ARGUMENT.SUPPORTED_VERSIONS,
-        getSupportedVersions()
-    );
-    CompatibilityBottomSheet bottomSheet = new CompatibilityBottomSheet();
-    showBottomSheet(bottomSheet, bundle);
   }
 
   public void reloadConfiguration(
@@ -371,6 +331,18 @@ public class SettingsViewModel extends BaseViewModel {
   public void setDateKeyboardReverseEnabled(boolean enabled) {
     sharedPrefs.edit()
         .putBoolean(Constants.SETTINGS.BEHAVIOR.DATE_KEYBOARD_REVERSE, enabled).apply();
+  }
+
+  public boolean getBarcodeAmountEnabled() {
+    return sharedPrefs.getBoolean(
+        BEHAVIOR.BARCODE_AMOUNT,
+        Constants.SETTINGS_DEFAULT.BEHAVIOR.BARCODE_AMOUNT
+    );
+  }
+
+  public void setBarcodeAmountEnabled(boolean enabled) {
+    sharedPrefs.edit()
+        .putBoolean(Constants.SETTINGS.BEHAVIOR.BARCODE_AMOUNT, enabled).apply();
   }
 
   public boolean getKeepScreenOnRecipesEnabled() {
@@ -1071,12 +1043,6 @@ public class SettingsViewModel extends BaseViewModel {
   public void toggleDisplayHelpForNotifications() {
     displayHelpForNotificationsLive.setValue(
         Boolean.FALSE.equals(displayHelpForNotificationsLive.getValue()));
-  }
-
-  public ArrayList<String> getSupportedVersions() {
-    return new ArrayList<>(Arrays.asList(
-        getApplication().getResources().getStringArray(R.array.compatible_grocy_versions)
-    ));
   }
 
   public boolean isFeatureEnabled(String pref) {

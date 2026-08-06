@@ -1,6 +1,25 @@
+## 3.9.0
+
+- New: Compatibility for Android 17
+- New: Navigation between mealplan and recipe (thanks @Tomahna!) (#976)
+- New: Honeywell CT50/CT60 Scanner support (thanks @jhbruhn!) (#970)
+- Fixed: Invalid shopping list FAB position after save (thanks @arblane!) (#972)
+- Fixed: Removed support of TLS 1.1 (thanks @misery!) (#957, #958)
+
+## 3.8.3
+
+- Fixed: Crash caused by color harmonization and internal ID mismatch (#955)
+
 ## 3.8.2
 
-- New: Compatibility for server version 4.5.0
+- New: Compatibility for server version 4.5.0 (thanks @jahway603!) (#940)
+- New: Minimum Android version is now Android 6.0 due to dependency requirements
+- New: Setting to enable or disable the use of amount in barcode (thanks @misery!) (#952)
+- New: Google Sans Flex typeface to better support expressive style
+- Improved: Quantity unit price used for last and average price (thanks @inhji!) (#950)
+- Improved: Faster product searches by showing top 30 items only (thanks @k3a!) (#937)
+- Improved: Removed compatibility check due to potential for confusion
+- Fixed: Confirmation bottom sheets not working when animations are disabled (thanks @k3a!) (#938)
 
 ## 3.8.1
 

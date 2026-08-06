@@ -15,12 +15,13 @@
  * along with Grocy Android. If not, see http://www.gnu.org/licenses/.
  *
  * Copyright (c) 2020-2024 by Patrick Zedler and Dominic Zedler
- * Copyright (c) 2024-2025 by Patrick Zedler
+ * Copyright (c) 2024-2026 by Patrick Zedler
  */
 
 package xyz.zedler.patrick.grocy.api;
 
 import android.content.Context;
+import xyz.zedler.patrick.grocy.BuildConfig;
 import xyz.zedler.patrick.grocy.R;
 
 public class OpenBeautyFactsApi {
@@ -29,7 +30,7 @@ public class OpenBeautyFactsApi {
 
   public static String getUserAgent(Context context) {
     return "Grocy Android - v"
-        + context.getString(R.string.versionName) + " - "
+        + BuildConfig.VERSION_NAME + " - "
         + context.getString(R.string.url_github);
   }
 

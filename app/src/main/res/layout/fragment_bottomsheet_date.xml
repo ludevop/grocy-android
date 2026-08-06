@@ -15,7 +15,7 @@
   ~ along with Grocy Android. If not, see http://www.gnu.org/licenses/.
   ~
   ~ Copyright (c) 2020-2024 by Patrick Zedler and Dominic Zedler
-  ~ Copyright (c) 2024-2025 by Patrick Zedler
+  ~ Copyright (c) 2024-2026 by Patrick Zedler
   -->
 
 <LinearLayout
@@ -131,7 +131,7 @@
           android:layout_height="wrap_content"
           android:calendarViewShown="false"
           android:datePickerMode="spinner"
-          android:fontFamily="@font/jost_medium" />
+          android:fontFamily="@font/google_sans_flex_medium" />
 
         <LinearLayout
           android:layout_width="match_parent"

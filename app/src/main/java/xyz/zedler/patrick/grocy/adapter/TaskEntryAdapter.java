@@ -15,7 +15,7 @@
  * along with Grocy Android. If not, see http://www.gnu.org/licenses/.
  *
  * Copyright (c) 2020-2024 by Patrick Zedler and Dominic Zedler
- * Copyright (c) 2024-2025 by Patrick Zedler
+ * Copyright (c) 2024-2026 by Patrick Zedler
  */
 
 package xyz.zedler.patrick.grocy.adapter;
@@ -151,7 +151,7 @@ public class TaskEntryAdapter extends
 
     if (colorDays) {
       holder.binding.days.setTypeface(
-          ResourcesCompat.getFont(context, R.font.jost_medium)
+          ResourcesCompat.getFont(context, R.font.google_sans_flex_medium)
       );
 
       int color;
@@ -165,7 +165,7 @@ public class TaskEntryAdapter extends
       holder.binding.days.setTextColor(color);
     } else {
       holder.binding.days.setTypeface(
-          ResourcesCompat.getFont(context, R.font.jost_book)
+          ResourcesCompat.getFont(context, R.font.google_sans_flex)
       );
       holder.binding.days.setTextColor(
           ResUtil.getColor(context, R.attr.colorOnSurfaceVariant)

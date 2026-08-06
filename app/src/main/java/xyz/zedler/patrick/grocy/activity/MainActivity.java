@@ -15,7 +15,7 @@
  * along with Grocy Android. If not, see http://www.gnu.org/licenses/.
  *
  * Copyright (c) 2020-2024 by Patrick Zedler and Dominic Zedler
- * Copyright (c) 2024-2025 by Patrick Zedler
+ * Copyright (c) 2024-2026 by Patrick Zedler
  */
 
 package xyz.zedler.patrick.grocy.activity;
@@ -151,7 +151,6 @@ public class MainActivity extends AppCompatActivity {
     hapticUtil = new HapticUtil(this);
     hapticUtil.setEnabled(PrefsUtil.areHapticsEnabled(sharedPrefs, this));
     netUtil = new NetUtil(this, sharedPrefs, debug, TAG);
-    netUtil.insertConscrypt();
     netUtil.createWebSocketClient();
 
     // LANGUAGE
@@ -253,7 +252,7 @@ public class MainActivity extends AppCompatActivity {
           new DownloadHelper(this, TAG),
           grocyApi,
           sharedPrefs,
-          () -> VersionUtil.showCompatibilityBottomSheetIfNecessary(this, sharedPrefs),
+          () -> {},
           null
       );
     }
@@ -489,7 +488,7 @@ public class MainActivity extends AppCompatActivity {
       if (linearLayout != null) {
         TextView textView = (TextView) linearLayout.getChildAt(0);
         if (textView != null) {
-          textView.setTypeface(ResourcesCompat.getFont(this, R.font.jost_book));
+          textView.setTypeface(ResourcesCompat.getFont(this, R.font.google_sans_flex));
         }
       }
     }

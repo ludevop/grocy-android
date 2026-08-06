@@ -15,7 +15,7 @@
  * along with Grocy Android. If not, see http://www.gnu.org/licenses/.
  *
  * Copyright (c) 2020-2024 by Patrick Zedler and Dominic Zedler
- * Copyright (c) 2024-2025 by Patrick Zedler
+ * Copyright (c) 2024-2026 by Patrick Zedler
  */
 
 package xyz.zedler.patrick.grocy.form;
@@ -876,7 +876,7 @@ public class FormDataPurchase {
     Product product = productDetailsLive.getValue().getProduct();
     Store store = storeLive.getValue();
     String note = noteLive.getValue();
-    String amount = amountLive.getValue();
+    String amount = getBarcodeAmountEnabled() ? amountLive.getValue() : "1";
     Integer quId = quantityUnitLive.getValue() != null ? quantityUnitLive.getValue().getId() : null;
 
     ProductBarcode productBarcode = new ProductBarcode();
@@ -973,6 +973,13 @@ public class FormDataPurchase {
       amountErrorLive.setValue(null);
       dueDateErrorLive.setValue(false);
     }, 50);
+  }
+
+ public boolean getBarcodeAmountEnabled() {
+    return sharedPrefs.getBoolean(
+        Constants.SETTINGS.BEHAVIOR.BARCODE_AMOUNT,
+        Constants.SETTINGS_DEFAULT.BEHAVIOR.BARCODE_AMOUNT
+     );
   }
 
   public boolean getPurchasedDateEnabled() {

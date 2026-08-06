@@ -15,7 +15,7 @@
  * along with Grocy Android. If not, see http://www.gnu.org/licenses/.
  *
  * Copyright (c) 2020-2024 by Patrick Zedler and Dominic Zedler
- * Copyright (c) 2024-2025 by Patrick Zedler
+ * Copyright (c) 2024-2026 by Patrick Zedler
  */
 
 package xyz.zedler.patrick.grocy.fragment;
@@ -528,7 +528,7 @@ public class RecipeFragment extends BaseFragment implements
     MaterialAlertDialogBuilder builder = new MaterialAlertDialogBuilder(
         activity, R.style.ThemeOverlay_Grocy_AlertDialog
     );
-    Typeface jost = ResourcesCompat.getFont(activity, R.font.jost_book);
+    Typeface jost = ResourcesCompat.getFont(activity, R.font.google_sans_flex);
 
     TextView title = new TextView(activity);
     title.setTextAppearance(activity, R.style.Widget_Grocy_TextView_HeadlineSmall);

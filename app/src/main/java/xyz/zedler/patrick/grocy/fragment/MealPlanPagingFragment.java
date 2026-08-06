@@ -15,7 +15,7 @@
  * along with Grocy Android. If not, see http://www.gnu.org/licenses/.
  *
  * Copyright (c) 2020-2024 by Patrick Zedler and Dominic Zedler
- * Copyright (c) 2024-2025 by Patrick Zedler
+ * Copyright (c) 2024-2026 by Patrick Zedler
  */
 
 package xyz.zedler.patrick.grocy.fragment;
@@ -30,12 +30,15 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.ItemTouchHelper;
 import java.time.LocalDate;
+import xyz.zedler.patrick.grocy.activity.MainActivity;
 import xyz.zedler.patrick.grocy.adapter.MealPlanEntryAdapter;
+import xyz.zedler.patrick.grocy.adapter.MealPlanEntryAdapter.MealPlanEntryAdapterListener;
 import xyz.zedler.patrick.grocy.adapter.MealPlanEntryAdapter.SimpleItemTouchHelperCallback;
 import xyz.zedler.patrick.grocy.databinding.FragmentMealPlanPagingBinding;
+import xyz.zedler.patrick.grocy.model.Recipe;
 import xyz.zedler.patrick.grocy.viewmodel.MealPlanViewModel;
 
-public class MealPlanPagingFragment extends Fragment {
+public class MealPlanPagingFragment extends Fragment implements MealPlanEntryAdapterListener {
 
   private static final String ARG_DATE = "date";
   private LocalDate date;
@@ -79,7 +82,8 @@ public class MealPlanPagingFragment extends Fragment {
         requireContext(),
         viewModel.getGrocyApi(),
         viewModel.getGrocyAuthHeaders(),
-        date.format(viewModel.getDateFormatter())
+        date.format(viewModel.getDateFormatter()),
+        this
     );
     binding.recycler.setAdapter(adapter);
 
@@ -105,5 +109,11 @@ public class MealPlanPagingFragment extends Fragment {
       }
     });
   }
-}
 
+  @Override
+  public void onItemRowClicked(Recipe recipe) {
+    ((MainActivity) requireActivity()).navUtil.navigate(
+        MealPlanFragmentDirections.actionMealPlanFragmentToRecipeFragment(recipe.getId())
+    );
+  }
+}
