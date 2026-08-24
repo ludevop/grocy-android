@@ -375,7 +375,6 @@
   <string name="msg_quick_mode_confirm_transfer">Transação que será executada:\n\nTransferência %1$s %2$s de %3$s\nde: %4$s\npara: %5$s</string>
   <!-- %1$s is a product name, %2$s an amount, %3$s a quantity unit, %4$s a due date, %5$s a price, %6$s a store and %7$s is a location -->
   <string name="msg_quick_mode_confirm_inventory">Transação que será executada:\n\nAlteração da quantidade em estoque de %1$s para %2$s %3$s\nAplicado aos itens adicionados:\nVencimento: %4$s\nPreço: %5$s\nLoja: %6$s\nLocalização: %7$s</string>
-  <string name="msg_compatibility">Esta versão do aplicativo não é compatível com a versão do Grocy no servidor.\n\nVersão atual do servidor: %1$s \n\nVersões do servidor suportadas:\n%2$s\nSe a versão atual do servidor tiver um número de versão principal maior (primeiro dígito) do que as versões suportadas e você ignorar este aviso, pode ocorrer perda de dados (improvável) ou falhas (provável).\nSe houver apenas uma pequena diferença (por exemplo, o terceiro dígito é maior), você provavelmente poderá ignorar este aviso.</string>
   <string name="msg_logout">Nada no seu servidor será modificado. Você será redirecionado à página de início de sessão</string>
   <string name="msg_logout_demo">Você está rodando a instância de demonstração de <u>https://grocy.info</u>.\n\n<b>Nenhuma de suas mudanças aqui são salvas!\nElas permanecem públicas até que o servidor automaticamente as sobreescreve.</b>\n\nNa página de início de sessão você pode indicar o endereço de seu próprio servidor.</string>
   <string name="msg_logout_demo_short">Servidor público de demonstração. Toque para detalhes.</string>
@@ -1319,6 +1318,8 @@
   <string name="setting_date_keyboard_input_description">Em vez de rodas seletoras de datas</string>
   <string name="setting_date_keyboard_reverse">Use o formato de data reversa para entrada</string>
   <string name="setting_date_keyboard_reverse_description">DDMMAAAA no lugar de  AAMMDD</string>
+  <string name="setting_barcode_amount">Use o valor para a geração do código de barras</string>
+  <string name="setting_barcode_amount_description">Ao criar um produto como parte de uma compra, o valor inserido é utilizado para a geração do código de barras.</string>
   <string name="setting_loading_circle">Mostrar círculo de carregamento para todas as solicitações</string>
   <string name="setting_loading_circle_description">Útil para redes lentas</string>
   <string name="setting_tor">Usar Tor</string>
